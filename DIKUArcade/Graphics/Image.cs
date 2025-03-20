@@ -16,9 +16,7 @@ public class Image : IBaseImage {
     /// <summary>
     /// Gets the texture associated with this image.
     /// </summary>
-    public Texture Texture {
-        get; private set;
-    }
+    public Texture Texture { get; private set; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Image"/> class using an existing <see cref="Texture"/>.
@@ -40,7 +38,7 @@ public class Image : IBaseImage {
         var stream = Assembly.GetCallingAssembly().GetManifestResourceStream(manifestResourceName);
 
         if (stream is null) {
-            throw new Exception($"Resouce with name {manifestResourceName} does not exists. Make" +
+            throw new Exception($"Resource with name {manifestResourceName} does not exists. Make" +
              "sure the name is correct or you have remebered to embed the file using the .csproj" +
              "file.");
         }

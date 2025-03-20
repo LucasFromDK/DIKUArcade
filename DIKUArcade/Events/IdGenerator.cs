@@ -15,8 +15,7 @@ internal class IdGenerator {
     private readonly Queue<ulong> idQueue = new Queue<ulong>();
     private ulong nextId = 0;
 
-    public IdGenerator() {
-    }
+    public IdGenerator() { }
 
     /// <summary>
     /// Generates and returns a unique ID.

@@ -1,11 +1,10 @@
-namespace TestDIKUArcade.TimedEventTest;
 using System;
 
-public struct GameEvent {
+namespace TestDIKUArcade.TimedEventTest;
 
-    public readonly string Message {
-        get;
-    }
+public struct GameEvent {
+    
+    public readonly string Message { get; }
     public GameEvent(string message) {
         Message = message;
     }

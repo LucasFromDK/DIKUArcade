@@ -1,8 +1,8 @@
 namespace DIKUArcade.Font;
 
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
+using System.IO;
+using System.Collections.Generic;
 using System.Reflection;
 
 public struct FontFamily {
@@ -14,15 +14,13 @@ public struct FontFamily {
         "DIKUArcade.Fonts.Pixeldroid.Menu.PixeldroidMenuRegular.ttf"
     };
 
-    public static FontFamily[] DefaultFontFamilies {
-        get;
-    } =
+    public static FontFamily[] DefaultFontFamilies { get; } =
         FontFamilies(
             fonts.Select(font => assembly.GetManifestResourceStream(font)!)
         ).ToArray();
     internal Lowlevel.FontFamily fontFamily;
     public FontFamily(Stream font) {
-        fontFamily = Lowlevel.createFontFamilies(new[] { font }).First();
+        fontFamily = Lowlevel.createFontFamilies(new []{font}).First();
     }
     internal FontFamily(Lowlevel.FontFamily fontFamily) {
         this.fontFamily = fontFamily;

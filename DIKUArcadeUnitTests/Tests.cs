@@ -1,10 +1,14 @@
-﻿namespace DIKUArcadeUnitTests;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
-[TestFixture]
-public class Tests {
-    [Test]
-    public void Test1() {
-        Assert.True(true);
+namespace DIKUArcadeUnitTests
+{
+    [TestFixture]
+    public class Tests
+    {
+        [Test]
+        public void Test1()
+        {
+            Assert.True(true);
+        }
     }
 }

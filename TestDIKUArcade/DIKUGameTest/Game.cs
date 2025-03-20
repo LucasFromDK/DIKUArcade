@@ -30,12 +30,11 @@ public class Game : DIKUGame {
         }
     }
 
-    public override void Render(WindowContext context) {
-
+    public override void Render(WindowContext context) { 
+        
     }
 
     public override void Update() {
-        if (f1Pressed)
-            throw new Exception("You pressed F1.");
+        if (f1Pressed) throw new Exception("You pressed F1.");
     }
 }

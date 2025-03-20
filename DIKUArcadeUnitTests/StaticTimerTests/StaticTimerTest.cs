@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
-using DIKUArcade.Timers;
 using NUnit.Framework;
+using DIKUArcade.Timers;
 
 [TestFixture]
 public class StaticTimerTest {
@@ -11,8 +11,7 @@ public class StaticTimerTest {
     private void Wait(Stopwatch timer, int milliseconds) {
         timer.Restart();
         var startTime = timer.ElapsedMilliseconds;
-        while (timer.ElapsedMilliseconds - startTime <= milliseconds) {
-        }
+        while (timer.ElapsedMilliseconds - startTime <= milliseconds) {}
         timer.Stop();
     }
 
@@ -39,8 +38,8 @@ public class StaticTimerTest {
 
         for (int i = 0; i < 10; i++) {
             StaticTimer.ResumeTimer();
-            Assert.GreaterOrEqual(StaticTimer.GetElapsedMilliseconds(), 1000 * i, $"test {i} (1)");
-            Assert.Less(StaticTimer.GetElapsedMilliseconds(), 50 + 1000 * i, $"test {i} (2)");
+            Assert.GreaterOrEqual(StaticTimer.GetElapsedMilliseconds(), 1000*i, $"test {i} (1)");
+            Assert.Less(StaticTimer.GetElapsedMilliseconds(), 50+1000*i, $"test {i} (2)");
             Wait(testTimer, 1000);
             StaticTimer.PauseTimer();
         }

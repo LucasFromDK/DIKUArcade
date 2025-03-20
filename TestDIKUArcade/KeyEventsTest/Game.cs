@@ -1,13 +1,13 @@
 namespace TestDIKUArcade.KeyEventsTest;
 
-using System;
-using System.Collections.Generic;
-using System.Numerics;
 using DIKUArcade;
-using DIKUArcade.Entities;
-using DIKUArcade.Graphics;
 using DIKUArcade.GUI;
 using DIKUArcade.Input;
+using DIKUArcade.Graphics;
+using DIKUArcade.Entities;
+using System.Numerics;
+using System;
+using System.Collections.Generic;
 
 public class Game : DIKUGame {
 
@@ -44,8 +44,7 @@ public class Game : DIKUGame {
 
     }
 
-    public override void Render(WindowContext context) {
-    }
+    public override void Render(WindowContext context) { }
 
     public override void Update() {
         Console.WriteLine($"Dictionary Size: {test.Count}");

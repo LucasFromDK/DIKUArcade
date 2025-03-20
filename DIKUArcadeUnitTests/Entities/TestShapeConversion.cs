@@ -1,8 +1,8 @@
 ﻿namespace DIKUArcadeUnitTests.Entities;
 
-using System.Numerics;
 using DIKUArcade.Entities;
 using DIKUArcade.Graphics;
+using System.Numerics;
 using NUnit.Framework;
 
 [TestFixture]

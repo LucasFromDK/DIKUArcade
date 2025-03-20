@@ -1,16 +1,16 @@
 ﻿namespace DIKUArcade.Graphics;
 
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Collections.Generic;
+using DIKUArcade.Timers;
 using DIKUArcade.Entities;
 using DIKUArcade.GUI;
-using DIKUArcade.Timers;
 
 /// <summary>
 /// Represents an animated image based on a sequence of textures, displaying a different texture
-/// at specified intervals to create animation effects. The animation is controlled by a frequency 
+/// at specified intervals to create animation effects. The animation is controlled by a frequency
 /// in milliseconds and can be started, stopped, or adjusted dynamically.
 /// </summary>
 public class ImageStride : IBaseImage {
@@ -47,7 +47,7 @@ public class ImageStride : IBaseImage {
             throw new ArgumentNullException("at least one image file must be specified");
         }
 
-        currentImageCount = generator.Next(count);
+        currentImageCount = -1; // Start from before the first frame to ensure it itn't skipped
         timerOffset = generator.Next(100);
     }
 
@@ -110,7 +110,7 @@ public class ImageStride : IBaseImage {
         var stream = Assembly.GetCallingAssembly().GetManifestResourceStream(manifestResourceName);
 
         if (stream is null) {
-            throw new Exception($"Resouce with name {manifestResourceName} does not exists. " +
+            throw new Exception($"Resource with name {manifestResourceName} does not exists. " +
              "Make sure the name is correct or you have remebered to embed the file using the " +
              ".csproj file.");
         }
@@ -153,6 +153,7 @@ public class ImageStride : IBaseImage {
     public void StartAnimation() {
         animate = true;
         lastTime = StaticTimer.GetElapsedMilliseconds();
+        currentImageCount = -1; // Start from before the first frame to ensure it itn't skipped
     }
 
     /// <summary>
@@ -210,8 +211,17 @@ public class ImageStride : IBaseImage {
         // Change texture stride if the desired number of milliseconds has passed
         if (animFrequency > 0 && animate && elapsed - lastTime > animFrequency) {
             lastTime = elapsed;
-            currentImageCount =
-                (currentImageCount >= maxImageCount) ? 0 : currentImageCount + 1;
+            currentImageCount++;
+
+            // Reset to the first frame if the animation completes a full cycle
+            if (currentImageCount > maxImageCount) {
+                currentImageCount = 0;
+            }
+        }
+
+        // Ensure currentImageCount is valid
+        if (currentImageCount == -1) {
+            currentImageCount = 0;
         }
 
         // Render the current texture object

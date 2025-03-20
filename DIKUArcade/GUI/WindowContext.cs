@@ -13,9 +13,7 @@ public readonly struct WindowContext {
     /// <value>
     /// The low-level drawing context.
     /// </value>
-    internal readonly Lowlevel.DrawingContext LowlevelContext {
-        get;
-    }
+    internal readonly Lowlevel.DrawingContext LowlevelContext { get; }
 
     /// <summary>
     /// Gets the camera associated with this rendering context.
@@ -23,9 +21,7 @@ public readonly struct WindowContext {
     /// <value>
     /// The camera used for rendering.
     /// </value>
-    public readonly Camera Camera {
-        get;
-    }
+    public readonly Camera Camera { get; }
 
     /// <summary>
     /// Gets the window associated with this rendering context.
@@ -33,9 +29,7 @@ public readonly struct WindowContext {
     /// <value>
     /// The window in which rendering occurs.
     /// </value>
-    public readonly Window Window {
-        get;
-    }
+    public readonly Window Window { get; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="WindowContext"/> struct.
