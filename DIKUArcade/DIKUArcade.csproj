@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="DIKU.Canvas" Version="2.1.0-alpha1" />
+    <PackageReference Include="naudio" Version="2.2.1"/>
   </ItemGroup>
 
 </Project>
